@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title>Página principal</title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+            <link rel="stylesheet" type="text/css" href="/css/styles2.css">
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+                    <style>
+
+                    .container {
+                        max-width: 1500px;
+                        margin: 0 auto;
+                        padding: 20px;
+                    }
+                </style>
+                    </head>
+                    <body class="bg-dark" onload="fetchTableUsuarios(); datosLogin()">
+                        <header>
+                            <div class="user-profile">
+                                <h3 id="username">[Nombre del usuario]</h3>
+                            </div>
+                        </header>
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <nav class="nav-menu">
+                                        <ul>
+                                            <li><a href="/paginaPrincipal">INICIO</a></li>
+                                            <li><a href="/paginaTickets">TICKETS</a></li>
+                                            <li><a href="/paginaClientes">CLIENTES</a></li>
+                                            <!--<li><a href="/paginaTipos">TIPOS</a></li>
+                                            <li><a href="/paginaServicios">SERVICIOS</a></li>-->
+                                            <li><a href="/paginaUsuarios">USUARIOS</a></li>
+                                            <li><a href="/paginaMicuenta">MI CUENTA</a></li>
+                                            <li><a href="/">SALIR</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="col-md-10">
+                                    <section id="content">
+                                        <header>
+                                            <h2>Crear y modificar usuario</h2>
+                                        </header>
+                                        <div class="container">
+                                            <form id="cliente-form" action="/guardarUsuario" method="POST" th:object="${usuario}">
+                                                <input type="hidden" id="idUsuario" th:field="*{idUsuario}"/>
+
+                                                <div class="form-group">
+                                                    <label for="nombreUsu">Nombre(s)</label>
+                                                    <input type="text" id="nombreUsu" name="nombreUsu" class="form-control" th:field="*{nombreUsu}" required></input>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="apellidoUsu">Apellido(s)</label>
+                                                    <input type="text" id="apellidoUsu" name="apellidoUsu" class="form-control" th:field="*{apellidoUsu}" required></input>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="telefonoUsu">Telefono</label>
+                                                    <input type="tel" id="telefonoUsu" name="telefonoUsu" pattern="[0-9]{9}" class="form-control" th:field="*{telefonoUsu}" required></text>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="dNIusu">Documento de Identidad (DNI)</label>
+                                                    <input type="number" id="dNIusu" name="dNIcli" min="10000000" max="99999999" class="form-control" th:field="*{dNIusu}" required></input>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="correoUsu">Correo Electrónico</label>
+                                                    <input type="email" id="correoUsu" name="correoUsu" class="form-control" th:field="*{correoUsu}" required></input>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="password">Contraseña</label>
+                                                    <input type="password" id="password" name="password" minlength="6" class="form-control" th:field="*{password}" required></input>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="tipoUsuarioList">Tipos de Usuario</label>
+                                                    <select id="tipoUsuarioList" name="tipoUsuarioList" class="form-control" multiple>
+                                                        <option th:each="tipoUsuario : ${tiposUsuarios}" th:value="${tipoUsuario.idTipoUs}" th:text="${tipoUsuario.tipo}"></option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="idEstadoUsu">Estado de usuario</label>
+                                                    <select name="idEstadoUsu" id="idArea" class="form-control col-lg-12"  th:field="*{idEstadoUsu.idEstadoUsu}">
+                                                        <option value= "">Selecciona estado</option>
+                                                        <option th:each="estado : ${estados}" th:value="${estado.idEstadoUsu}"
+                                                                th:text="${estado.estadoUsu}"></option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                                    <a href="/paginaUsuarios" class="btn btn-secondary">Regresar a la lista</a>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+
+                        <script src="/js/script.js"></script> 
+                        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                    </body>
+                    </html>

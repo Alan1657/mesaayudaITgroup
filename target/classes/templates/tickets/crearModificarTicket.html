@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title>Página principal</title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+            <link rel="stylesheet" type="text/css" href="/css/styles2.css">
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+                    <style>
+
+                        .container {
+                            max-width: 1500px;
+                            margin: 0 auto;
+                            padding: 20px;
+                        }
+                    </style>
+                    </head>
+                    <body class="bg-dark" onload="datosLogin()">
+                        <header>
+                            <div class="user-profile">
+                                <h3 id="username">[Nombre del usuario]</h3>
+                            </div>
+                        </header>
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <nav class="nav-menu">
+                                        <ul>
+                                            <li><a href="/paginaPrincipal">INICIO</a></li>
+                                            <li><a href="/paginaTickets">TICKETS</a></li>
+                                            <li><a href="/paginaClientes">CLIENTES</a></li>
+                                            <!--<li><a href="/paginaTipos">TIPOS</a></li>
+                                            <li><a href="/paginaServicios">SERVICIOS</a></li>-->
+                                            <li><a href="/paginaUsuarios">USUARIOS</a></li>
+                                            <li><a href="/paginaMicuenta">MI CUENTA</a></li>
+                                            <li><a href="/">SALIR</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="col-md-10">
+                                    <section id="content">
+                                        <header>
+                                            <h2>Crear o modificar ticket</h2>
+                                        </header>
+
+                                        <div class="container"> 
+                                            <form id="ticket-form" action="/guardarTicket" method="POST" th:object="${ticket}">
+                                                <input type="hidden" id="idTicket" th:field="*{idTicket}"/>
+                                                <div class="form-group">
+                                                    <span>Ticket: </span><label for="numeroTicket" th:field="*{numeroTicket}" th:text="*{numeroTicket}"></label>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="idCliente">Cliente:</label>
+                                                    <select name="idCliente" id="idCliente" class="form-control col-lg-12"  th:field="*{idCliente.idCliente}">
+                                                        <option value= "">Selecciona el cliente</option>
+                                                        <option th:each="cliente : ${clientes}" th:value="${cliente.idCliente}"
+                                                                th:text="${cliente.correo}"></option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="idCategoria">Tipo:</label>
+                                                    <select name="idCategoria" id="idCategoria" class="form-control col-lg-12"  th:field="*{idCategoria.idCategoria}">
+                                                        <option value= "">Selecciona el categoria</option>
+                                                        <option th:each="categoria : ${categorias}" th:value="${categoria.idCategoria}"
+                                                                th:text="${categoria.nombreCat}"></option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="idUrgencia">Prioridad:</label>
+                                                    <select name="idUrgencia" id="idUrgencia" class="form-control col-lg-12"  th:field="*{idUrgencia.idUrgencia}">
+                                                        <option value= "">Selecciona prioridad</option>
+                                                        <option th:each="prioridad : ${prioridad}" th:value="${prioridad.idUrgencia}"
+                                                                th:text="${prioridad.urgencia}"></option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="idTipoUs">Tipo de usuario a derivar:</label>
+                                                    <select name="idTipoUs" id="idTipoUs" class="form-control col-lg-12" th:field="*{idUsuario.tipoUsuarioList[0].idTipoUs}">
+                                                        <option value= "">Selecciona tipo de usuario</option>
+                                                        <option th:each="tipo : ${tipos}" th:value="${tipo.idTipoUs}"
+                                                                th:text="${tipo.tipo}"></option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="idUsuario">Servicio Asignado a:</label>
+                                                    <select name="idUsuario" id="idUsuario" class="form-control col-lg-12"  th:field="*{idUsuario.idUsuario}">
+                                                        <option value= "">Selecciona asignación</option>
+                                                        <option th:each="usuario : ${usuarios}" th:value="${usuario.idUsuario}"
+                                                                th:text="${usuario.correoUsu}"></option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="observacion">Descripción:</label>
+                                                    <textarea id="observacion" name="observacion" class="form-control" th:field="*{observacion}" required></textarea>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="fechaRegTicket">Fecha de inicio:</label>
+                                                    <input type="date" id="fechaRegTicket" name="fechaRegTicket" class="form-control" th:field="*{fechaRegTicket}">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="idEstado">Estado:</label>
+                                                    <select name="idEstado" id="idEstado" class="form-control col-lg-12"  th:field="*{idEstado.idEstado}">
+                                                        <option value= "">Selecciona estado</option>
+                                                        <option th:each="estado : ${estados}" th:value="${estado.idEstado}"
+                                                                th:text="${estado.estado}"></option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                                    <a href="/paginaTickets" class="btn btn-secondary">Regresar a la lista</a>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+
+                        <script src="/js/script.js"></script> 
+                        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                    </body>
+                    </html>

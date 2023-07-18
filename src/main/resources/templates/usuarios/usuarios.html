@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title>Página principal</title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+            <link rel="stylesheet" type="text/css" href="/css/styles2.css">
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+                    <style>
+
+                    .container {
+                        max-width: 1500px;
+                        margin: 0 auto;
+                        padding: 20px;
+                    }
+                </style>
+                    </head>
+                    <body class="bg-dark" onload="fetchTableUsuarios(); datosLogin()">
+                        <header>
+                            <div class="user-profile">
+                                <h3 id="username">[Nombre del usuario]</h3>
+                            </div>
+                        </header>
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <nav class="nav-menu">
+                                        <ul>
+                                            <li><a href="/paginaPrincipal">INICIO</a></li>
+                                            <li><a href="/paginaTickets">TICKETS</a></li>
+                                            <li><a href="/paginaClientes">CLIENTES</a></li>
+                                            <!--<li><a href="/paginaTipos">TIPOS</a></li>
+                                            <li><a href="/paginaServicios">SERVICIOS</a></li>-->
+                                            <li><a href="/paginaUsuarios">USUARIOS</a></li>
+                                            <li><a href="/paginaMicuenta">MI CUENTA</a></li>
+                                            <li><a href="/">SALIR</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="col-md-10">
+                                    <section id="content">
+                                        <header>
+                                            <h2>Usuarios</h2>
+                                        </header>
+                                        <div>
+                                            <a href="/nuevoUsuario" class="btn btn-primary">Nuevo Usuario</a>
+                                        </div>
+                                        <br>
+                                            <div class="container">
+                                                <h3>Listado de usuarios</h3>
+                                                <div class="table-responsive">
+                                                    <table id="usuarios-table" class="table table-bordered table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>ID</th>
+                                                                <th>Nombre y Apellido</th>
+                                                                <th>Telefono</th>
+                                                                <th>Correo electrónico</th>                                                            
+                                                                <th>Rol</th>
+                                                                <th>Estado</th>
+                                                                <th>Acciones</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <!-- Los usuarios se llenarán aquí dinámicamente -->
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+
+                        <script src="/js/script.js"></script> 
+                        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                    </body>
+                    </html>

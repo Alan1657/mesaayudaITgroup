@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="com.itGroup_mesaAyuda_jar_0.0.1-SNAPSHOTPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>com.itGroup.mesaAyuda.modelo.EstadoUsu</class>
+    <class>com.itGroup.mesaAyuda.modelo.TipoUsuario</class>
+    <class>com.itGroup.mesaAyuda.modelo.EstadoTicket</class>
+    <class>com.itGroup.mesaAyuda.modelo.UrgenciaTicket</class>
+    <class>com.itGroup.mesaAyuda.modelo.Cliente</class>
+    <class>com.itGroup.mesaAyuda.modelo.Ticket</class>
+    <class>com.itGroup.mesaAyuda.modelo.AreaCliente</class>
+    <class>com.itGroup.mesaAyuda.modelo.Usuario</class>
+    <class>com.itGroup.mesaAyuda.modelo.CategoriaTicket</class>
+    <class>com.itGroup.mesaAyuda.modelo.Servicioderivacion</class>
+    <class>com.itGroup.mesaAyuda.modelo.Serviciourgencia</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bd_mesayuda?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value=""/>
+    </properties>
+  </persistence-unit>
+</persistence>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title>Página principal</title>
+        <link rel="stylesheet" type="text/css" href="/css/styles2.css">
+            <link rel="stylesheet" type="text/css" href="styles.css">
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+                    <style>
+
+                    .container {
+                        max-width: 1500px;
+                        margin: 0 auto;
+                        padding: 20px;
+                    }
+                </style>
+                    </head>
+                    <body class="bg-dark" onload="fetchTableClientes(); datosLogin()">
+                        <header>
+                            <div class="user-profile">
+                                <h3 id="username">[Nombre del usuario]</h3>
+                            </div>
+                        </header>
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <nav class="nav-menu">
+                                        <ul>
+                                            <li><a href="/paginaPrincipal">INICIO</a></li>
+                                            <li><a href="/paginaTickets">TICKETS</a></li>
+                                            <li><a href="/paginaClientes">CLIENTES</a></li>
+                                            <!--<li><a href="/paginaTipos">TIPOS</a></li>
+                                            <li><a href="/paginaServicios">SERVICIOS</a></li>-->
+                                            <li><a href="/paginaUsuarios">USUARIOS</a></li>
+                                            <li><a href="/paginaMicuenta">MI CUENTA</a></li>
+                                            <li><a href="/">SALIR</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div class="col-md-10">
+                                    <section id="content">
+                                        <header>
+                                            <h2>Crear o modificar cliente</h2>
+                                        </header>
+
+                                        <div class="container"> 
+                                            <form id="cliente-form" action="/guardarCliente" method="POST" th:object="${cliente}">
+                                                <input type="hidden" id="idCliente" th:field="*{idCliente}"/>
+                                                                                             
+                                                <div class="form-group">
+                                                    <label for="nombreCli">Nombre(s)</label>
+                                                    <input type="text" id="nombreCli" name="nombreCli" class="form-control" th:field="*{nombreCli}" required></input>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="apellidoCli">Apellido(s)</label>
+                                                    <input type="text" id="apellidoCli" name="apellidoCli" class="form-control" th:field="*{apellidoCli}" required></input>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="telefono">Telefono</label>
+                                                    <input type="tel" id="telefono" name="telefono" pattern="[0-9]{9}" class="form-control" th:field="*{telefono}" required></text>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="correo">Correo Electrónico</label>
+                                                    <input type="email" id="correo" name="correo" class="form-control" th:field="*{correo}" required></input>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="idArea">Area</label>
+                                                    <select name="idArea" id="idArea" class="form-control col-lg-12"  th:field="*{idArea.idArea}">
+                                                        <option value= "">Selecciona Area</option>
+                                                        <option th:each="area : ${areas}" th:value="${area.idArea}"
+                                                                th:text="${area.nombreArea}"></option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="dNIcli">Documento de Identidad (DNI)</label>
+                                                    <input type="number" id="dNIcli" name="dNIcli" min="10000000" max="99999999" class="form-control" th:field="*{dNIcli}" required></input>
+                                                </div>
+                                                <div class="form-group">
+                                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                                    <a href="/paginaClientes" class="btn btn-secondary">Regresar a la lista</a>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                        <script src="/js/script.js"></script> 
+                    </body>
+                    </html>

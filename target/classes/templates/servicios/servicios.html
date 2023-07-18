@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title>Página principal</title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="stylesheet" type="text/css" href="/css/styles2.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    </head>
+    <body class="bg-dark" onload="datosLogin()">
+        <header>
+            <div class="user-profile">
+                <h3 id="username">[Nombre del usuario]</h3>
+            </div>
+        </header>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <nav class="nav-menu">
+                        <ul>
+                            <li><a href="/paginaPrincipal">INICIO</a></li>
+                            <li><a href="/paginaTickets">TICKETS</a></li>
+                            <li><a href="/paginaClientes">CLIENTES</a></li>
+                                            <!--<li><a href="/paginaTipos">TIPOS</a></li>
+                                            <li><a href="/paginaServicios">SERVICIOS</a></li>-->
+                            <li><a href="/paginaUsuarios">USUARIOS</a></li>
+                            <li><a href="/paginaMicuenta">MI CUENTA</a></li>
+                            <li><a href="/">SALIR</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-md-9">
+                    <section id="content">
+                        <header>
+                            <h1>Servicios</h1>
+                        </header>
+
+                        <div class="container">
+                            <h2>Listado de servicios</h2>
+                            <ul id="servicios-list" class="list-group">
+                                <!-- Los servicios se llenarán aquí dinámicamente -->
+                            </ul>
+                        </div>
+
+
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <script src="/js/script.js"></script> 
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+</html>

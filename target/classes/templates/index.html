@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title>Página principal- Mesa ayuda</title>
+        <link rel="stylesheet" type="text/css" href="/css/styles2.css">
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+                <style>
+
+                    .container {
+                        max-width: 1500px;
+                        margin: 0 auto;
+                        padding: 20px;
+                    }
+                </style>
+                </head>
+                <body class="bg-dark" onload="datosLogin()">
+                    <header>
+                        <div class="user-profile">
+                            <h3 id="username">[Nombre del usuario]</h3>
+                        </div>
+                    </header>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <nav class="nav-menu">
+                                    <ul>
+                                        <li><a href="/paginaPrincipal">INICIO</a></li>
+                                        <li><a href="/paginaTickets">TICKETS</a></li>
+                                        <li><a href="/paginaClientes">CLIENTES</a></li>
+                                        <!--<li><a href="/paginaTipos">TIPOS</a></li>
+                                        <li><a href="/paginaServicios">SERVICIOS</a></li>-->
+                                        <li><a href="/paginaUsuarios">USUARIOS</a></li>
+                                        <li><a href="/paginaMicuenta">MI CUENTA</a></li>
+                                        <li><a href="/">SALIR</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="col-md-10">
+                                <section id="content">
+                                    <!-- Contenido de la página principal -->
+                                    <h2>Bienvenido a la página principal</h2>
+                                    <p>Aquí puedes encontrar información y opciones relevantes para tu uso del sistema.</p>
+                                    <p>Como usuario de la mesa de ayuda, podrás:</p>
+                                    <ul>
+                                        <li>Crear y gestionar tickets de soporte.</li>
+                                        <li>Acceder a la información de los clientes y sus solicitudes.</li>
+                                        <li>Explorar diferentes tipos de problemas y sus soluciones.</li>
+                                        <li>Administrar servicios y usuarios.</li>
+                                        <li>Actualizar tu perfil y configuración personal.</li>
+                                    </ul>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+
+                    <script src="/js/script.js"></script> 
+                    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                </body>
+                </html>
